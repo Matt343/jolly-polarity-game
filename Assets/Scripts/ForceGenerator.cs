@@ -15,18 +15,17 @@ public class ForceGenerator : MonoBehaviour
 		if (Active) {
 			var objects = FindObjectsOfType<MagneticObject> ();
 			foreach (var o in objects) {
-				if (o.gameObject != this.transform.parent.gameObject) {
-					MagneticObject m = o as MagneticObject;
-					var displacement = m.transform.position - this.transform.position;
+				if (o.Active && o.gameObject != this.transform.parent.gameObject) {
+					var displacement = o.transform.position - this.transform.position;
 					var sqrDist = displacement.sqrMagnitude;
 					if (sqrDist == 0)
 						displacement = Vector2.one * .001f;
 
-					var force = displacement.normalized * m.ForceStrength * this.ForceStrength / sqrDist;
+					var force = displacement.normalized * o.ForceStrength * this.ForceStrength / sqrDist;
 
 					// Check if object is within min distance for attractive force
-					if (Mathf.Abs (Vector2.Angle (force, displacement)) < 1f || !this.intersecting.Contains (m.gameObject)) {
-						m.rigidbody2D.AddForce (force);
+					if (Mathf.Abs (Vector2.Angle (force, displacement)) < 1f || !this.intersecting.Contains (o.gameObject)) {
+						o.rigidbody2D.AddForce (force);
 					}
 				}
 			}

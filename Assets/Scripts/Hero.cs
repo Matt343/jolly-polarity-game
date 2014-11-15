@@ -77,7 +77,7 @@ public class Hero : MonoBehaviour
 		}
 
 		this.forceGenerator.Active = this.HeroController.ForceOn;
-
+		this.magneticObject.Active = this.HeroController.ForceOn;
 	}
 
 	void Flip ()

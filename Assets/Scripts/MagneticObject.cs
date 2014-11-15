@@ -6,4 +6,5 @@ public class MagneticObject : MonoBehaviour
 {
 
 	public float ForceStrength = 1f;
+	public bool Active = true;
 }
