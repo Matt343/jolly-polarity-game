@@ -244,7 +244,7 @@ Transform:
   m_Children:
   - {fileID: 1197910509}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
 --- !u!1 &334743386
 GameObject:
   m_ObjectHideFlags: 0
@@ -1652,7 +1652,7 @@ Transform:
   - {fileID: 1029315708}
   - {fileID: 334743387}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
 --- !u!114 &1927467251
 MonoBehaviour:
   m_ObjectHideFlags: 0
