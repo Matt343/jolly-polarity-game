@@ -16,7 +16,20 @@ public class ForceGenerator : MonoBehaviour
 			var objects = FindObjectsOfType<MagneticObject> ();
 			foreach (var o in objects) {
 				if (o.Active && o.gameObject != this.transform.parent.gameObject) {
-					var displacement = o.transform.position - this.transform.position;
+					//var displacement = o.transform.position - this.transform.position;
+					var displacement = o.collider2D.bounds.center - this.collider2D.bounds.center;
+
+					Vector3 target = o.collider2D.bounds.extents;
+					Vector3 acting = this.collider2D.bounds.extents;
+					acting += target;
+					acting.x -= 0.8f;
+					acting.y -= 0.8f;
+
+					displacement.x = (displacement.x > acting.x) ? displacement.x - acting.x : 
+						((displacement.x < -acting.x) ? displacement.x + acting.x : 0);
+					displacement.y = (displacement.y > acting.y) ? displacement.y - acting.y : 
+						((displacement.y < -acting.y) ? displacement.y + acting.y : 0);
+
 					var sqrDist = displacement.sqrMagnitude;
 					if (sqrDist == 0)
 						displacement = Vector2.one * .001f;
@@ -24,7 +37,7 @@ public class ForceGenerator : MonoBehaviour
 					var force = displacement.normalized * o.ForceStrength * this.ForceStrength / sqrDist;
 
 					// Check if object is within min distance for attractive force
-					if (Mathf.Abs (Vector2.Angle (force, displacement)) < 1f || !this.intersecting.Contains (o.gameObject)) {
+					if (sqrDist > 0.2f && (Mathf.Abs (Vector2.Angle (force, displacement)) < 1f || !this.intersecting.Contains (o.gameObject))) {
 						o.rigidbody2D.AddForce (force);
 					}
 				}
