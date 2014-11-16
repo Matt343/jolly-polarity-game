@@ -44,11 +44,6 @@ public class Hero : MonoBehaviour {
 			this.ShouldJump = true;
 		
 		}
-		if (this.HeroController.Jump) {
-			anim.SetBool ("Jump", true);
-		} else {
-			anim.SetBool ("Jump", false);
-		}
 		float viewportPointOfEdgeDetector = this.RenderingCamera.WorldToViewportPoint (this.ScreenEdgeDetector.transform.position).x;
 		this.AtEdgeOfScreen = viewportPointOfEdgeDetector < 0.0f || viewportPointOfEdgeDetector >= 1.0f;
 
@@ -58,13 +53,7 @@ public class Hero : MonoBehaviour {
 		float horizontal = this.HeroController.HorizontalMovementAxis;
 		bool grounded = Physics2D.Linecast (this.transform.position, this.GroundDetector.transform.position, 1 << LayerMask.NameToLayer ("Ground"));
 		anim.SetFloat ("Speed", Mathf.Abs (horizontal));
-		if (this.HeroController.Jump) {
-			anim.SetBool ("Jump", true);
-		} else {
-			anim.SetBool ("Jump", false);
-		}
-
-
+		
 		bool movingIntoScreenEdge = (horizontal > 0 && this.FacingRight) || (horizontal < 0 && !this.FacingRight);
 		if (this.AtEdgeOfScreen && movingIntoScreenEdge) {
 			this.rigidbody2D.velocity = new Vector2 (0, this.rigidbody2D.velocity.y);
