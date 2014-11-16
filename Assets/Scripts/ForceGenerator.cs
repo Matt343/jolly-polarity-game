@@ -6,22 +6,19 @@ public class ForceGenerator : MonoBehaviour {
 	public float ForceStrength = 1f;
 	public bool Active = false;
 
-
-
 	private List<GameObject> intersecting = new List<GameObject> ();
-	private FieldLines fieldLines;
+	private PointChargeManager pointChanges;
 
 	void Start () {
-		fieldLines = FindObjectOfType<FieldLines> ();
-		fieldLines.Generators.Add (this);
+		pointChanges = FindObjectOfType<PointChargeManager> ();
+		pointChanges.Generators.Add (this);
 	}
-
 	// Update is called once per frame
 	void FixedUpdate () {
 		if (Active) {
 			var objects = FindObjectsOfType<MagneticObject> ();
 			foreach (var o in objects) {
-				if (o.Active && o.gameObject != this.transform.parent.gameObject) {
+				if (o.Active && o.gameObject != this.transform.gameObject && (this.transform.parent != null && this.transform.parent.gameObject != o.gameObject)) {
 					var displacement = o.transform.position - this.transform.position;
 					var sqrDist = displacement.sqrMagnitude;
 					if (sqrDist == 0)
@@ -39,12 +36,18 @@ public class ForceGenerator : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D (Collider2D other) {
-		this.intersecting.Add (other.gameObject);
+		var pointCharge = other.gameObject.GetComponent<PointCharge> ();
+		if (pointCharge != null)
+			Destroy (other.gameObject);
+		else
+			this.intersecting.Add (other.gameObject);
 	}
 
 	void OnTriggerExit2D (Collider2D other) {
 		this.intersecting.Remove (other.gameObject);
 	}
 
-
+	void OnDestroy () {
+		pointChanges.Generators.Remove (this);
+	}
 }

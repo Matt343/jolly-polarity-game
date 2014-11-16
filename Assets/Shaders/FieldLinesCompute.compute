@@ -20,7 +20,7 @@ void CSMain (uint2 id : SV_DispatchThreadID)
 {
     float w, h;
     tex.GetDimensions(w, h);
- 	
+ 	float maxStrength = 100;
  	float2 field = {-10, -10};
  	float2 pos = { id[0] / w, id[1] / h };
  	float2 scale = { pos[0] * (maxP[0] - minP[0]), pos[1] * (maxP[1] - minP[1])};
@@ -32,10 +32,10 @@ void CSMain (uint2 id : SV_DispatchThreadID)
     	field += disp * points[i].strength/ dist;
     }
 //    field = points[0].pos;
- 	float distSqr = dot(field, field);
- 	field = field / sqrt(distSqr);
+ 	float dist = sqrt(dot(field, field));
+ 	field = field / dist;
  	float2 d = {0.5, 0.5};
  	field = field / 2.0 + d;
  	
-    tex[id] = float4(field, 0, 1.0);
+    tex[id] = float4(field, dist / maxStrength, 1.0);
 }
