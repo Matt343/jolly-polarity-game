@@ -23,5 +23,9 @@ public class Spikes : MonoBehaviour {
 			foreach (var o in objects)
 				o.gameObject.GetComponent<HeroManager> ().respawn ();
 		}
+
+		if (other.gameObject.GetComponent<FallingPlatform> () != null) {
+			Destroy(other.gameObject);
+		}
 	}
 }

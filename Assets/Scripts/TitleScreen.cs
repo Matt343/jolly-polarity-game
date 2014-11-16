@@ -55,7 +55,7 @@ public class TitleScreen : MonoBehaviour
 		buttonStyle.normal.background = (Texture2D)this.StartButtonNormal;
 		buttonStyle.hover.background = (Texture2D)this.StartButtonHover;
 		buttonStyle.active.background = (Texture2D)this.StartButtonActive;
-		if (GUI.Button (this.startButtonRect, "Start Game", buttonStyle))
+		if (GUI.Button (this.startButtonRect, "", buttonStyle))
 		{
 			Application.LoadLevel (Application.loadedLevel+1);
 		}
