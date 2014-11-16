@@ -39,7 +39,7 @@ public class Hero : MonoBehaviour
 	{
 		bool grounded = Physics2D.Linecast (this.transform.position, this.GroundDetector.transform.position, 1 << LayerMask.NameToLayer ("Ground"));
 		JollyDebug.Watch (this, "Grounded", grounded);
-		if (this.HeroController.Jump && grounded) {
+		if (this.HeroController.Jump&& grounded) {
 			this.ShouldJump = true;
 		}
 
@@ -77,7 +77,7 @@ public class Hero : MonoBehaviour
 		}
 
 		this.forceGenerator.Active = this.HeroController.ForceOn;
-		this.magneticObject.Active = this.HeroController.ForceOn;
+		this.magneticObject.Active = this.HeroController.isForceOn;
 	}
 
 	void Flip ()

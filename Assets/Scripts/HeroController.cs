@@ -4,6 +4,7 @@ using System.Collections;
 public class HeroController : MonoBehaviour
 {
 	public int PlayerNumber;
+	public bool isForceOn;
 
 	public float HorizontalMovementAxis {
 		get {
@@ -19,7 +20,10 @@ public class HeroController : MonoBehaviour
 
 	public bool ForceOn {
 		get {
-			return Input.GetButton (string.Format ("Fire[{0}]", this.PlayerNumber));
+
+			if(Input.GetButtonDown (string.Format ("Fire[{0}]", this.PlayerNumber)))
+				isForceOn=!isForceOn;
+			return isForceOn;
 		}
 	}
 }
