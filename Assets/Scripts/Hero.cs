@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using Jolly;
 
 
-public class Hero : MonoBehaviour
-{
+public class Hero : MonoBehaviour {
 	public float MaxSpeed;
 	public float MoveForce;
 	public float JumpForce;
@@ -23,34 +22,48 @@ public class Hero : MonoBehaviour
 	private bool ShouldJump = false;
 	private bool AtEdgeOfScreen = false;
 	private bool FacingRight = true;
+	private Animator anim;
+	private float jumpTime, jumpDelay = 0.5f;
+	private bool jumped;
 
-	void Start ()
-	{
+	void Start () {
 		this.HeroController = this.GetComponent<HeroController> ();
 		this.forceGenerator = this.GetComponentInChildren<ForceGenerator> ();
 		this.magneticObject = this.GetComponent<MagneticObject> ();
+		this.anim = this.GetComponent<Animator> ();
 
 		JollyDebug.Watch (this, "FacingRight", delegate () {
 			return this.FacingRight;
 		});
 	}
 
-	void Update ()
-	{
+	void Update () {
 		bool grounded = Physics2D.Linecast (this.transform.position, this.GroundDetector.transform.position, 1 << LayerMask.NameToLayer ("Ground"));
 		JollyDebug.Watch (this, "Grounded", grounded);
 		if (this.HeroController.Jump && grounded) {
 			this.ShouldJump = true;
+		
 		}
-
+		if (this.HeroController.Jump) {
+			anim.SetBool ("Jump", true);
+		} else {
+			anim.SetBool ("Jump", false);
+		}
 		float viewportPointOfEdgeDetector = this.RenderingCamera.WorldToViewportPoint (this.ScreenEdgeDetector.transform.position).x;
 		this.AtEdgeOfScreen = viewportPointOfEdgeDetector < 0.0f || viewportPointOfEdgeDetector >= 1.0f;
 
 	}
 
-	void FixedUpdate ()
-	{
+	void FixedUpdate () {
 		float horizontal = this.HeroController.HorizontalMovementAxis;
+		bool grounded = Physics2D.Linecast (this.transform.position, this.GroundDetector.transform.position, 1 << LayerMask.NameToLayer ("Ground"));
+		anim.SetFloat ("Speed", Mathf.Abs (horizontal));
+		if (this.HeroController.Jump) {
+			anim.SetBool ("Jump", true);
+		} else {
+			anim.SetBool ("Jump", false);
+		}
+
 
 		bool movingIntoScreenEdge = (horizontal > 0 && this.FacingRight) || (horizontal < 0 && !this.FacingRight);
 		if (this.AtEdgeOfScreen && movingIntoScreenEdge) {
@@ -69,7 +82,15 @@ public class Hero : MonoBehaviour
 
 		if (this.ShouldJump) {
 			this.rigidbody2D.AddForce (Vector2.up * JumpForce);
+			this.anim.SetTrigger ("Jump");
+			jumpTime = jumpDelay;
+			jumped = true;
 			this.ShouldJump = false;
+		}
+		jumpTime -= Time.deltaTime;
+		if (jumpTime <= 0 && grounded && jumped) {
+			this.anim.SetTrigger ("Land");
+			jumped = false;
 		}
 
 		if ((horizontal > 0 && !this.FacingRight) || (horizontal < 0 && this.FacingRight)) {
@@ -80,8 +101,7 @@ public class Hero : MonoBehaviour
 		this.magneticObject.Active = this.HeroController.ForceOn;
 	}
 
-	void Flip ()
-	{
+	void Flip () {
 		this.FacingRight = !this.FacingRight;
 		this.transform.localScale = this.transform.localScale.SetX (this.transform.localScale.x * -1f);
 	}

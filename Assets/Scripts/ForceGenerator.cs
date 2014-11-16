@@ -2,16 +2,19 @@
 using System.Collections.Generic;
 
 [RequireComponent (typeof(Collider2D))]
-public class ForceGenerator : MonoBehaviour
-{
+public class ForceGenerator : MonoBehaviour {
 	public float ForceStrength = 1f;
 	public bool Active = false;
 
 	private List<GameObject> intersecting = new List<GameObject> ();
+	private PointChargeManager pointCharges;
 
+	void Start () {
+		pointCharges = FindObjectOfType<PointChargeManager> ();
+		pointCharges.Generators.Add (this);
+	}
 	// Update is called once per frame
-	void FixedUpdate ()
-	{
+	void FixedUpdate () {
 		if (Active) {
 			var objects = FindObjectsOfType<MagneticObject> ();
 			foreach (var o in objects) {
@@ -45,14 +48,20 @@ public class ForceGenerator : MonoBehaviour
 		}
 	}
 
-	void OnTriggerEnter2D (Collider2D other)
-	{
-		this.intersecting.Add (other.gameObject);
+	void OnTriggerEnter2D (Collider2D other) {
+		var pointCharge = other.GetComponent<PointCharge> ();
+		if (pointCharge != null && pointCharge.GetComponent<MagneticObject> ().ForceStrength * ForceStrength < 0)
+			Destroy (other.gameObject);
+		else
+			this.intersecting.Add (other.gameObject);
 	}
 
-	void OnTriggerExit2D (Collider2D other)
-	{
+	void OnTriggerExit2D (Collider2D other) {
 		this.intersecting.Remove (other.gameObject);
+	}
+
+	void OnDestroy () {
+		pointCharges.Generators.Remove (this);
 	}
 
 

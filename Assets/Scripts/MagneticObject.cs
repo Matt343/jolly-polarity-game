@@ -2,8 +2,7 @@
 using System.Collections;
 
 [RequireComponent (typeof(Rigidbody2D))]
-public class MagneticObject : MonoBehaviour
-{
+public class MagneticObject : MonoBehaviour {
 	public float ForceStrength = 1f;
 	public bool Active = true;
 	public SpriteRenderer Sprite;
@@ -13,14 +12,12 @@ public class MagneticObject : MonoBehaviour
 
 	private Color currentColor;
 
-	void Start ()
-	{
+	void Start () {
 		if (!this.Sprite) 
 			this.Sprite = GetComponent<SpriteRenderer> ();
 	}
 
-	void Update ()
-	{
+	void Update () {
 		currentColor = Active ? (ForceStrength > 0 ? PositiveColor : NegativeColor) : DefaultColor;
 		if (this.Sprite) 
 			this.Sprite.color = currentColor;
