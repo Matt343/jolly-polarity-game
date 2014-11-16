@@ -383,7 +383,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee546fa248ff3ac45bb4fff7ffe55f7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ForceStrength: -50.4199982
+  ForceStrength: -44.4199982
   Active: 1
 --- !u!4 &1164263217
 Transform:
@@ -454,7 +454,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400004, guid: d957a5550a17341fabd452c0cbb85b4b, type: 2}
       propertyPath: ForceStrength
-      value: -50.4199982
+      value: -44.4199982
       objectReference: {fileID: 0}
     - target: {fileID: 11400004, guid: d957a5550a17341fabd452c0cbb85b4b, type: 2}
       propertyPath: Active
