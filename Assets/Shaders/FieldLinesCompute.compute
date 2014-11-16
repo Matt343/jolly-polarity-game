@@ -1,0 +1,41 @@
+﻿// Each #kernel tells which function to compile; you can have many kernels
+#pragma kernel CSMain
+ 
+ 
+struct PointForce
+{
+	float2 pos;
+	float strength;
+};
+
+RWTexture2D<float4> tex;
+StructuredBuffer<PointForce> points;
+
+int count;
+
+float2 minP, maxP;
+
+[numthreads(8,8,1)]
+void CSMain (uint2 id : SV_DispatchThreadID)
+{
+    float w, h;
+    tex.GetDimensions(w, h);
+ 	float maxStrength = 100;
+ 	float2 field = {-10, -10};
+ 	float2 pos = { id[0] / w, id[1] / h };
+ 	float2 scale = { pos[0] * (maxP[0] - minP[0]), pos[1] * (maxP[1] - minP[1])};
+ 	pos = minP + scale;
+    for (int i = 0; i < count; i++) {
+ 	   	float2 disp = pos - points[i].pos;
+    	float dist = dot(disp, disp); 
+    	disp = disp / sqrt(dist);
+    	field += disp * points[i].strength/ dist;
+    }
+//    field = points[0].pos;
+ 	float dist = sqrt(dot(field, field));
+ 	field = field / dist;
+ 	float2 d = {0.5, 0.5};
+ 	field = field / 2.0 + d;
+ 	
+    tex[id] = float4(field, dist / maxStrength, 1.0);
+}

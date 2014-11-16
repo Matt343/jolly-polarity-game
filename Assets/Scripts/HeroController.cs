@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class HeroController : MonoBehaviour
-{
+public class HeroController : MonoBehaviour {
 	public int PlayerNumber;
 
 	public float HorizontalMovementAxis {

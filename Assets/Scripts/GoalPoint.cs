@@ -20,7 +20,7 @@ public class GoalPoint : MonoBehaviour {
 			foreach(var o in objects)
 				if(!players.Contains(o.gameObject))
 					return;
-			Application.LoadLevel (GameManager.Instance.GetNextLevel ());
+			Application.LoadLevel (Application.loadedLevel+1);
 		}
 	}
 
