@@ -5,7 +5,7 @@ public class SpringAnim : MonoBehaviour {
 
 	public GameObject SpringBase;
 	public GameObject Spring;
-	public int xy = 1; //x=0, y=1
+	private int xy = 1; //x=0, y=1
 
 	private float ratiox, ratioy;
 
@@ -33,20 +33,22 @@ public class SpringAnim : MonoBehaviour {
 	}
 
 	void Adjust(){
-		Vector3 avg = (Spring.transform.position + SpringBase.transform.position);
-		avg.x /= 2;
-		avg.y /= 2;
+		//Vector3 avg = (Spring.transform.position + SpringBase.transform.position);
+		Vector3 avg = Spring.transform.localPosition;
+		avg /= 2;
 		float length;
-		this.transform.position = avg;
+		avg.y += Spring.transform.collider2D.bounds.extents.y;
+		this.transform.localPosition = avg;
 		Vector3 scale;
 		scale = this.transform.localScale;
-		if(xy == 1){
-			length = Spring.transform.position.y + Spring.collider2D.bounds.extents.y - SpringBase.transform.position.y;
-			scale.y = length * ratioy;
-		}else{
-			length = Spring.transform.position.x + Spring.collider2D.bounds.extents.x - SpringBase.transform.position.x;
-			scale.x = length * ratiox;
-		}
+	//	if(xy == 1){
+			//length = Spring.transform.position.y + Spring.transform.collider2D.bounds.extents.y - SpringBase.transform.position.y;
+		length = Spring.transform.localPosition.y / 2 + Spring.transform.collider2D.bounds.size.y;
+		scale.y = length * ratioy;
+	//	}else{
+	//		length = Spring.transform.position.x + Spring.transform.collider2D.bounds.extents.x - SpringBase.transform.position.x;
+	//		scale.x = length * ratiox;
+	//	}
 		this.transform.localScale = scale;
 	}
 }

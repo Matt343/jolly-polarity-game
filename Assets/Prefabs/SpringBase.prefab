@@ -82,7 +82,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 41.0693092, y: 1.67117071, z: 0}
+  m_LocalPosition: {x: 27, y: 1.39999998, z: 0}
   m_LocalScale: {x: 1.24045098, y: .668903649, z: 1.1027962}
   m_Children:
   - {fileID: 400006}
@@ -150,7 +150,7 @@ Rigidbody2D:
   m_Mass: 50
   m_LinearDrag: 0
   m_AngularDrag: .0500000007
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_FixedAngle: 0
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -211,8 +211,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bc6ba1ff14652b428eca6f39313b662, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ForceStrength: 10
-  Active: 0
+  ForceStrength: 1
+  Active: 1
   Sprite: {fileID: 0}
   DefaultColor: {r: 1, g: 1, b: 1, a: 1}
   PositiveColor: {r: 0, g: 0, b: 1, a: 1}
@@ -228,7 +228,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bc6ba1ff14652b428eca6f39313b662, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ForceStrength: 10000
+  ForceStrength: -10800
   Active: 1
   Sprite: {fileID: 0}
   DefaultColor: {r: 1, g: 1, b: 1, a: 1}
@@ -247,7 +247,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SpringBase: {fileID: 100000}
   Spring: {fileID: 100002}
-  xy: 1
 --- !u!114 &11400006
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -259,7 +258,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee546fa248ff3ac45bb4fff7ffe55f7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ForceStrength: -1
+  ForceStrength: 1
   Active: 1
 --- !u!212 &21200000
 SpriteRenderer:
