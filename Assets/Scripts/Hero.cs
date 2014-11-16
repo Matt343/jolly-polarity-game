@@ -77,12 +77,12 @@ public class Hero : MonoBehaviour
 		}
 
 		this.forceGenerator.Active = this.HeroController.ForceOn;
-
+		this.magneticObject.Active = this.HeroController.ForceOn;
 	}
 
 	void Flip ()
 	{
 		this.FacingRight = !this.FacingRight;
-		this.transform.localScale = this.transform.localScale.SetX (this.FacingRight ? 1.0f : -1.0f);
+		this.transform.localScale = this.transform.localScale.SetX (this.transform.localScale.x * -1f);
 	}
 }
