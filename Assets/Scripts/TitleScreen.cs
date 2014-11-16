@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class TitleScreen : MonoBehaviour
@@ -20,6 +20,10 @@ public class TitleScreen : MonoBehaviour
 			                            Screen.height - this.BottomMargin - this.StartButtonHeight,
 			                            this.StartButtonWidth,
 			                            this.StartButtonHeight);
+
+		// Get the game manager and make it persist through scenes
+		GameManager gameManager = FindObjectOfType<GameManager> ();
+		GameObject.DontDestroyOnLoad (gameManager);
 	}
 
 	void OnGUI ()
@@ -30,7 +34,7 @@ public class TitleScreen : MonoBehaviour
 		buttonStyle.active.background = (Texture2D)this.StartButtonActive;
 		if (GUI.Button (this.startButtonRect, "Start Game", buttonStyle))
 		{
-			Application.LoadLevel (this.StartButtonSceneToLoad);
+			Application.LoadLevel (GameManager.Instance.GetNextLevel());
 		}
 	}
 }
