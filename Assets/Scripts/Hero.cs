@@ -24,11 +24,14 @@ public class Hero : MonoBehaviour
 	private bool AtEdgeOfScreen = false;
 	private bool FacingRight = true;
 
+	private Animator animator;
+
 	void Start ()
 	{
 		this.HeroController = this.GetComponent<HeroController> ();
 		this.forceGenerator = this.GetComponentInChildren<ForceGenerator> ();
 		this.magneticObject = this.GetComponent<MagneticObject> ();
+		this.animator = this.GetComponent<Animator> ();
 
 		JollyDebug.Watch (this, "FacingRight", delegate () {
 			return this.FacingRight;
@@ -51,6 +54,7 @@ public class Hero : MonoBehaviour
 	void FixedUpdate ()
 	{
 		float horizontal = this.HeroController.HorizontalMovementAxis;
+		animator.SetFloat ("speed", Mathf.Abs (horizontal));
 
 		bool movingIntoScreenEdge = (horizontal > 0 && this.FacingRight) || (horizontal < 0 && !this.FacingRight);
 		if (this.AtEdgeOfScreen && movingIntoScreenEdge) {
