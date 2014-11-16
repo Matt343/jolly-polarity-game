@@ -18,7 +18,7 @@ public class ForceGenerator : MonoBehaviour {
 		if (Active) {
 			var objects = FindObjectsOfType<MagneticObject> ();
 			foreach (var o in objects) {
-				if (o.Active && o.gameObject != this.transform.gameObject && (this.transform.parent != null && this.transform.parent.gameObject != o.gameObject)) {
+				if (o.Active && o.gameObject != this.transform.gameObject && this.transform.parent.gameObject != o.gameObject) {
 					var displacement = o.transform.position - this.transform.position;
 					var sqrDist = displacement.sqrMagnitude;
 					if (sqrDist == 0)
@@ -37,7 +37,7 @@ public class ForceGenerator : MonoBehaviour {
 
 	void OnTriggerEnter2D (Collider2D other) {
 		var pointCharge = other.gameObject.GetComponent<PointCharge> ();
-		if (pointCharge != null)
+		if (pointCharge != null && pointCharge.GetComponent<MagneticObject> ().ForceStrength * ForceStrength < 0)
 			Destroy (other.gameObject);
 		else
 			this.intersecting.Add (other.gameObject);

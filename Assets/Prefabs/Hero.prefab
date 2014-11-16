@@ -93,7 +93,7 @@ GameObject:
   - 114: {fileID: 11400004}
   - 61: {fileID: 6100002}
   - 212: {fileID: 21200002}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ForceGenerator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -270,10 +270,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ForceStrength: -10.0799999
   Active: 0
-  Sprite: {fileID: 0}
-  DefaultColor: {r: 1, g: 1, b: 1, a: 0}
-  PositiveColor: {r: 0, g: 0, b: 1, a: 1}
-  NegativeColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!114 &11400006
 MonoBehaviour:
   m_ObjectHideFlags: 1

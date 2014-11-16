@@ -9,7 +9,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 400000}
   - 96: {fileID: 9600000}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28,7 +28,7 @@ GameObject:
   - 114: {fileID: 11400002}
   - 114: {fileID: 11400000}
   - 58: {fileID: 5800000}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: PositivePointCharge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -66,8 +66,8 @@ Rigidbody2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
-  m_Mass: 1
-  m_LinearDrag: 0
+  m_Mass: .5
+  m_LinearDrag: 2
   m_AngularDrag: 0
   m_GravityScale: 0
   m_FixedAngle: 0
@@ -112,16 +112,16 @@ TrailRenderer:
   m_Colors:
     m_Color[0]:
       serializedVersion: 2
-      rgba: 4294901760
+      rgba: 2164195328
     m_Color[1]:
       serializedVersion: 2
-      rgba: 4294901760
+      rgba: 2164195328
     m_Color[2]:
       serializedVersion: 2
-      rgba: 4294901760
+      rgba: 2164195328
     m_Color[3]:
       serializedVersion: 2
-      rgba: 4294901760
+      rgba: 2164195328
     m_Color[4]:
       serializedVersion: 2
       rgba: 16711680
