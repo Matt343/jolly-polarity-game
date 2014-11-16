@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using Jolly;
 
 
-public class Hero : MonoBehaviour
-{
+public class Hero : MonoBehaviour {
 	public float MaxSpeed;
 	public float MoveForce;
 	public float JumpForce;
@@ -24,8 +23,7 @@ public class Hero : MonoBehaviour
 	private bool AtEdgeOfScreen = false;
 	private bool FacingRight = true;
 
-	void Start ()
-	{
+	void Start () {
 		this.HeroController = this.GetComponent<HeroController> ();
 		this.forceGenerator = this.GetComponentInChildren<ForceGenerator> ();
 		this.magneticObject = this.GetComponent<MagneticObject> ();
@@ -35,8 +33,7 @@ public class Hero : MonoBehaviour
 		});
 	}
 
-	void Update ()
-	{
+	void Update () {
 		bool grounded = Physics2D.Linecast (this.transform.position, this.GroundDetector.transform.position, 1 << LayerMask.NameToLayer ("Ground"));
 		JollyDebug.Watch (this, "Grounded", grounded);
 		if (this.HeroController.Jump && grounded) {
@@ -48,8 +45,7 @@ public class Hero : MonoBehaviour
 
 	}
 
-	void FixedUpdate ()
-	{
+	void FixedUpdate () {
 		float horizontal = this.HeroController.HorizontalMovementAxis;
 
 		bool movingIntoScreenEdge = (horizontal > 0 && this.FacingRight) || (horizontal < 0 && !this.FacingRight);
@@ -80,8 +76,7 @@ public class Hero : MonoBehaviour
 		this.magneticObject.Active = this.HeroController.ForceOn;
 	}
 
-	void Flip ()
-	{
+	void Flip () {
 		this.FacingRight = !this.FacingRight;
 		this.transform.localScale = this.transform.localScale.SetX (this.transform.localScale.x * -1f);
 	}

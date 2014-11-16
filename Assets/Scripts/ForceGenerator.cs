@@ -2,32 +2,22 @@
 using System.Collections.Generic;
 
 [RequireComponent (typeof(Collider2D))]
-public class ForceGenerator : MonoBehaviour
-{
+public class ForceGenerator : MonoBehaviour {
 	public float ForceStrength = 1f;
 	public bool Active = false;
 
-	public SpriteRenderer Sprite;
-	public Color DefaultColor = Color.white;
-	public Color PositiveColor = Color.blue;
-	public Color NegativeColor = Color.red;
+
 
 	private List<GameObject> intersecting = new List<GameObject> ();
-	private Color currentColor;
+	private FieldLines fieldLines;
 
-	void Start ()
-	{
-		if (!this.Sprite) 
-			this.Sprite = GetComponent<SpriteRenderer> ();
+	void Start () {
+		fieldLines = FindObjectOfType<FieldLines> ();
+		fieldLines.Generators.Add (this);
 	}
 
 	// Update is called once per frame
-	void FixedUpdate ()
-	{
-		currentColor = Active ? (ForceStrength > 0 ? PositiveColor : NegativeColor) : DefaultColor;
-		if (this.Sprite) 
-			this.Sprite.color = currentColor;
-
+	void FixedUpdate () {
 		if (Active) {
 			var objects = FindObjectsOfType<MagneticObject> ();
 			foreach (var o in objects) {
@@ -48,13 +38,11 @@ public class ForceGenerator : MonoBehaviour
 		}
 	}
 
-	void OnTriggerEnter2D (Collider2D other)
-	{
+	void OnTriggerEnter2D (Collider2D other) {
 		this.intersecting.Add (other.gameObject);
 	}
 
-	void OnTriggerExit2D (Collider2D other)
-	{
+	void OnTriggerExit2D (Collider2D other) {
 		this.intersecting.Remove (other.gameObject);
 	}
 
