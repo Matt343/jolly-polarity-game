@@ -1,13 +1,11 @@
 fileFormatVersion: 2
-guid: 5769c849db8560441a38bbc9e70d32ec
+guid: 5790e3aed38e6994680afe63752d6cc0
 TextureImporter:
   fileIDToRecycleName:
-    21300000: bluemagnetemptysheet_0
-    21300002: bluemagnetemptysheet_1
-    21300004: bluemagnetemptysheet_2
-    21300006: bluemagnetemptysheet_3
-    21300008: bluemagnetemptysheet_4
-    21300010: bluemagnetemptysheet_5
+    21300000: bluemagnetidle_0
+    21300002: bluemagnetidle_1
+    21300004: bluemagnetidle_2
+    21300006: bluemagnetidle_3
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -49,61 +47,41 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: bluemagnetemptysheet_0
+    - name: bluemagnetidle_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
+        x: 20
+        y: 20
         width: 37
         height: 75
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: bluemagnetemptysheet_1
+    - name: bluemagnetidle_1
       rect:
         serializedVersion: 2
-        x: 37
-        y: 0
+        x: 97
+        y: 20
         width: 37
         height: 75
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: bluemagnetemptysheet_2
+    - name: bluemagnetidle_2
       rect:
         serializedVersion: 2
-        x: 74
-        y: 0
+        x: 174
+        y: 20
         width: 37
         height: 75
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: bluemagnetemptysheet_3
+    - name: bluemagnetidle_3
       rect:
         serializedVersion: 2
-        x: 111
-        y: 0
-        width: 37
-        height: 75
-      alignment: 0
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: bluemagnetemptysheet_4
-      rect:
-        serializedVersion: 2
-        x: 148
-        y: 0
-        width: 37
-        height: 75
-      alignment: 0
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: bluemagnetemptysheet_5
-      rect:
-        serializedVersion: 2
-        x: 185
-        y: 0
+        x: 251
+        y: 20
         width: 37
         height: 75
       alignment: 0
