@@ -92,6 +92,7 @@ GameObject:
   - 4: {fileID: 400010}
   - 114: {fileID: 11400004}
   - 61: {fileID: 6100002}
+  - 212: {fileID: 21200002}
   m_Layer: 0
   m_Name: ForceGenerator
   m_TagString: Untagged
@@ -269,6 +270,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ForceStrength: -10.0799999
   Active: 0
+  Sprite: {fileID: 0}
+  DefaultColor: {r: 1, g: 1, b: 1, a: 0}
+  PositiveColor: {r: 0, g: 0, b: 1, a: 1}
+  NegativeColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!114 &11400006
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -307,6 +312,28 @@ SpriteRenderer:
   m_SortingLayerID: 3513809513
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 23dc065aed712c14ea3f6751315ca1eb, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+--- !u!212 &21200002
+SpriteRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100010}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_LightmapIndex: 255
+  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_LightProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 8e562cc4f30da45e4b291f3fb47f0a3a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:
