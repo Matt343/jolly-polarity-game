@@ -24,6 +24,8 @@ public class Hero : MonoBehaviour
 	private bool AtEdgeOfScreen = false;
 	private bool FacingRight = true;
 	private Animator anim;
+	private float jumpTime, jumpDelay = 0.5f;
+	private bool jumped;
 
 	void Start ()
 	{
@@ -43,8 +45,13 @@ public class Hero : MonoBehaviour
 		JollyDebug.Watch (this, "Grounded", grounded);
 		if (this.HeroController.Jump && grounded) {
 			this.ShouldJump = true;
+		
 		}
-
+		if (this.HeroController.Jump) {
+			anim.SetBool ("Jump", true);
+		} else {
+			anim.SetBool ("Jump", false);
+		}
 		float viewportPointOfEdgeDetector = this.RenderingCamera.WorldToViewportPoint (this.ScreenEdgeDetector.transform.position).x;
 		this.AtEdgeOfScreen = viewportPointOfEdgeDetector < 0.0f || viewportPointOfEdgeDetector >= 1.0f;
 
@@ -53,7 +60,14 @@ public class Hero : MonoBehaviour
 	void FixedUpdate ()
 	{
 		float horizontal = this.HeroController.HorizontalMovementAxis;
+		bool grounded = Physics2D.Linecast (this.transform.position, this.GroundDetector.transform.position, 1 << LayerMask.NameToLayer ("Ground"));
 		anim.SetFloat ("Speed", Mathf.Abs (horizontal));
+		if (this.HeroController.Jump) {
+			anim.SetBool ("Jump", true);
+		} else {
+			anim.SetBool ("Jump", false);
+		}
+
 
 		bool movingIntoScreenEdge = (horizontal > 0 && this.FacingRight) || (horizontal < 0 && !this.FacingRight);
 		if (this.AtEdgeOfScreen && movingIntoScreenEdge) {
@@ -72,7 +86,15 @@ public class Hero : MonoBehaviour
 
 		if (this.ShouldJump) {
 			this.rigidbody2D.AddForce (Vector2.up * JumpForce);
+			this.anim.SetTrigger ("Jump");
+			jumpTime = jumpDelay;
+			jumped = true;
 			this.ShouldJump = false;
+		}
+		jumpTime -= Time.deltaTime;
+		if (jumpTime <= 0 && grounded && jumped) {
+			this.anim.SetTrigger ("Land");
+			jumped = false;
 		}
 
 		if ((horizontal > 0 && !this.FacingRight) || (horizontal < 0 && this.FacingRight)) {
