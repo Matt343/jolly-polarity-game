@@ -47,7 +47,8 @@ public class CameraFollow : MonoBehaviour
 
 	private float HeroesSeparation()
 	{
-		return Mathf.Abs (this.LeftmostHero().transform.position.x - this.RightmostHero().transform.position.x);
+		return Mathf.Max (Mathf.Abs (this.LeftmostHero().transform.position.x - this.RightmostHero().transform.position.x),
+		                  Mathf.Abs (this.LeftmostHero().transform.position.y - this.RightmostHero().transform.position.y));
 	}
 
 	private GameObject LeftmostHero ()
