@@ -1293,7 +1293,7 @@ Prefab:
     - target: {fileID: 21200000, guid: d957a5550a17341fabd452c0cbb85b4b, type: 2}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 9069ca9b344de37439d3da2d4da54da7,
+      objectReference: {fileID: 21300000, guid: 72c4f793548150b48becb61bb424d227,
         type: 3}
     - target: {fileID: 11400006, guid: d957a5550a17341fabd452c0cbb85b4b, type: 2}
       propertyPath: ForceStrength
@@ -2131,7 +2131,7 @@ SpriteRenderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 3513809513
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 6b1696d088766a445b6718c04b9944a9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2abaf0dd7cd1dc2448a0457c22004836, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &1497900275
 GameObject:
@@ -2249,7 +2249,7 @@ Prefab:
     - target: {fileID: 21200000, guid: d957a5550a17341fabd452c0cbb85b4b, type: 2}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 6b1696d088766a445b6718c04b9944a9,
+      objectReference: {fileID: 21300000, guid: 2abaf0dd7cd1dc2448a0457c22004836,
         type: 3}
     - target: {fileID: 11400006, guid: d957a5550a17341fabd452c0cbb85b4b, type: 2}
       propertyPath: ForceStrength
@@ -2307,6 +2307,10 @@ Prefab:
       propertyPath: m_Size.x
       value: .430011392
       objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: d957a5550a17341fabd452c0cbb85b4b, type: 2}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 22e998e153a090a4b887b7af2f04b453, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d957a5550a17341fabd452c0cbb85b4b, type: 2}
   m_RootGameObject: {fileID: 1844541032}
@@ -2560,7 +2564,7 @@ Animator:
   m_GameObject: {fileID: 1844541032}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 4706b6dffc33f4f489e7ef94646ac09c, type: 2}
+  m_Controller: {fileID: 9100000, guid: 22e998e153a090a4b887b7af2f04b453, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -2724,7 +2728,7 @@ SpriteRenderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 3513809513
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 9069ca9b344de37439d3da2d4da54da7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 72c4f793548150b48becb61bb424d227, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &2126234165
 GameObject:
