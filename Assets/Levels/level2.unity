@@ -330,7 +330,7 @@ Transform:
   m_LocalScale: {x: .752737343, y: 1.07533801, z: 1.24076033}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
 --- !u!1 &243438355
 GameObject:
   m_ObjectHideFlags: 0
@@ -397,8 +397,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HeroesToFollow:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 699324241}
+  - {fileID: 933382917}
   SeparationZoomFactor: .00999999978
   FollowLerpFactor: 5
   OffsetFromAverageLocation: {x: 0, y: 0, z: 0}
@@ -823,7 +823,7 @@ Transform:
   m_Children:
   - {fileID: 759582784}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
 --- !u!1 &548812711
 GameObject:
   m_ObjectHideFlags: 0
@@ -1047,7 +1047,7 @@ MonoBehaviour:
   ScreenEdgeDetector: {fileID: 1862472851}
   ProjectileEmitLocator: {fileID: 1574870715}
   Projectile: {fileID: 100000, guid: cc06d24b547734495b892df464e83110, type: 2}
-  RenderingCamera: {fileID: 0}
+  RenderingCamera: {fileID: 243438356}
   ForceStrength: 1
 --- !u!50 &699324249
 Rigidbody2D:
@@ -1243,11 +1243,11 @@ Prefab:
     - target: {fileID: 11400000, guid: 9a9c8be00acedc447a9af994ba957887, type: 2}
       propertyPath: HeroesToFollow.Array.data[0]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 699324241}
     - target: {fileID: 11400000, guid: 9a9c8be00acedc447a9af994ba957887, type: 2}
       propertyPath: HeroesToFollow.Array.data[1]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 933382917}
     - target: {fileID: 2000000, guid: 9a9c8be00acedc447a9af994ba957887, type: 2}
       propertyPath: m_CullingMask.m_Bits
       value: 4294967295
@@ -1408,7 +1408,7 @@ MonoBehaviour:
   ScreenEdgeDetector: {fileID: 658624359}
   ProjectileEmitLocator: {fileID: 1577262343}
   Projectile: {fileID: 100000, guid: cc06d24b547734495b892df464e83110, type: 2}
-  RenderingCamera: {fileID: 0}
+  RenderingCamera: {fileID: 243438356}
   ForceStrength: 1
 --- !u!50 &933382925
 Rigidbody2D:
