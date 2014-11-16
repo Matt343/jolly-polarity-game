@@ -5,8 +5,11 @@ public class GameManager : MonoBehaviour {
 
 	// Static Singleton Instance
 	private static GameManager _Instance = null;
-	private int level = 0;
-	
+
+	private GameManager() {
+
+	}
+
 	// Property to get instance
 	public static GameManager Instance {
 		get {
@@ -17,12 +20,7 @@ public class GameManager : MonoBehaviour {
 		}
 	}
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-
 	public int GetNextLevel() {
-		return this.level++;
+		return (Application.loadedLevel+1);
 	}
 }
