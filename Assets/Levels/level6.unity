@@ -907,7 +907,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bc6ba1ff14652b428eca6f39313b662, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ForceStrength: 1
+  ForceStrength: -1
   Active: 1
   Sprite: {fileID: 0}
   DefaultColor: {r: 1, g: 1, b: 1, a: 1}
@@ -3076,7 +3076,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400002, guid: 52de1d157d81e0142b7ef8eba6d80c84, type: 2}
       propertyPath: ForceStrength
-      value: 11000
+      value: 12000
       objectReference: {fileID: 0}
     - target: {fileID: 5000000, guid: 52de1d157d81e0142b7ef8eba6d80c84, type: 2}
       propertyPath: m_IsKinematic
@@ -3085,6 +3085,14 @@ Prefab:
     - target: {fileID: 5000000, guid: 52de1d157d81e0142b7ef8eba6d80c84, type: 2}
       propertyPath: m_Mass
       value: 100000
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 52de1d157d81e0142b7ef8eba6d80c84, type: 2}
+      propertyPath: ForceStrength
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400006, guid: 52de1d157d81e0142b7ef8eba6d80c84, type: 2}
+      propertyPath: ForceStrength
+      value: -1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 52de1d157d81e0142b7ef8eba6d80c84, type: 2}
@@ -3794,7 +3802,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee546fa248ff3ac45bb4fff7ffe55f7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ForceStrength: 1
+  ForceStrength: -1
   Active: 1
 --- !u!61 &1190598164
 BoxCollider2D:
@@ -4035,6 +4043,10 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 0f15d32c26691854bb53e62665e254bc, type: 2}
       propertyPath: Rate
+      value: 100000
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 0f15d32c26691854bb53e62665e254bc, type: 2}
+      propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -5250,7 +5262,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bc6ba1ff14652b428eca6f39313b662, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ForceStrength: 11000
+  ForceStrength: 12000
   Active: 1
   Sprite: {fileID: 0}
   DefaultColor: {r: 1, g: 1, b: 1, a: 1}
@@ -6169,7 +6181,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd96050149932ff4e83d4120e0db115f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Rate: 1
+  Rate: 100000
   PositivePointCharge: {fileID: 100002, guid: 6d2a431c69be3bb429b54bbb47430675, type: 2}
   NegativePointCharge: {fileID: 100002, guid: da3a48ca1b3909a47be5f8e49b01213d, type: 2}
   Size: 1
